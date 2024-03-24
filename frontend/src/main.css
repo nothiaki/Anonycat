@@ -1,17 +1,13 @@
 :root {
-    --back-color: #22242B;
-    --principal-color: #141417;
-    --font-color: #838383;
+    --background: #141417;
+    --primary: #22242B;
+    --text: #838383;
 }
 
 * {
     padding: 0;
     margin: 0;
-    color: var(--font-color);
+    color: var(--text);
     font-family: "JetBrains Mono", monospace;
-    font-size: 20px;
 }
 
-#root {
-    background-color: var(--back-color);
-}

@@ -1,0 +1,17 @@
+.not-found-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+}
+
+.not-found-container main {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 24px;
+  padding: 36px;
+}
+

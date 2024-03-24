@@ -9,7 +9,6 @@ datasource db {
 
 model User {
   color   String
-  image   String
   name    String    @unique
   Message Message[]
 }

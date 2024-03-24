@@ -6,9 +6,17 @@
     width: 100vw;
 }
 
-.box-login {
+form {
     background-color: var(--principal-color);
+    display: flex;
+    flex-direction: column;
     width: 50vw;
     height: 50vh;
     border-radius: 20px;
+}
+
+form input, button{
+    border-radius: 5px;
+    border: none;
+    width: 40%;
 }

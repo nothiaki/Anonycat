@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.box-login {
+    background-color: var(--principal-color);
+    width: 50vw;
+    height: 50vh;
+    border-radius: 20px;
+}

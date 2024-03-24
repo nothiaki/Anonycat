@@ -1,0 +1,13 @@
+:root {
+    --back-color: #22242B;
+    --principal-color: #141417;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    background-color: var(--back-color);
+}

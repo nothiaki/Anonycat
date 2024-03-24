@@ -13,12 +13,27 @@ export async function create(req: Request, res: Response) {
 
   const { content, owner } = reqSchema.parse(req.body);
 
-  await prisma.message.create({
+  const ownerExist = await prisma.user.findUnique({
+    where: {
+      name: owner
+    }
+  });
+
+  if (!ownerExist) {
+    return res.status(404).json({
+      "message": "Owner not found"
+    });
+  };
+
+  const data = await prisma.message.create({
     data: {
       content,
       owner
     }
   });
 
-  return res.status(201);
+  return res.status(201).json({
+    "createdAt": data.createdAt,
+    "id": data.id,
+  });
 }

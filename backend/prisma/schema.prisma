@@ -14,8 +14,9 @@ model User {
 }
 
 model Message {
+  id        Int      @id @default(autoincrement())
   content   String
   createdAt DateTime @default(now())
-  owner     String   @unique
+  owner     String
   User      User     @relation(fields: [owner], references: [name])
 }

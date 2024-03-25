@@ -5,9 +5,9 @@ type Props = {
   content: string
 }
 
-const Button = (props: Props) => {
+const Button = ({ func, content }: Props) => {
   return (
-    <button className='button-ui' onClick={props.func}><h3>{props.content}</h3></button>
+    <button className='button-ui' onClick={func}><h3>{content}</h3></button>
   );
 }
 

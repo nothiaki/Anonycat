@@ -2,6 +2,7 @@ import './login.css'
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../ui/button/button';
+import InputText from '../../ui/inputText/inputText';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
           <Button func={goHome} content='Upload picture' />
         </div>
         <div className='left'>
-          <input type="text" name="nickname" id="nickname" />
+          <InputText label='Anonyname:' name='anonyname-input' />
           <input type="color" name="input-color" id="input-color" />
           <Button func={goHome} content='Join chat' />
         </div>

@@ -1,5 +1,5 @@
 .input-text-label input {
-  width: 100%;
+  width: 15rem;
   background-color: transparent;
   border: none;
   border-bottom: solid 3px var(--primary);

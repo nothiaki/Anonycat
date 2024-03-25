@@ -18,6 +18,7 @@ const Login = () => {
           <img src='https://pbs.twimg.com/profile_images/1770271023885144064/O9lHM-qY_400x400.jpg' />
           <Button func={goHome} content='Upload picture' />
         </div>
+        <div className="spaceBar"></div>
         <div className='left'>
           <InputText label='Anonyname:' name='anonyname-input' />
           <input type="color" name="input-color" id="input-color" />

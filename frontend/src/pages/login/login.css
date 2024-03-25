@@ -8,24 +8,46 @@
 }
 
 .login-container form {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  width: 40vw;
+  display:  flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.login-container form .right, .left {
+.login-container form div{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
+  justify-content: space-between;
   gap: 12px;
 }
 
-.login-container form .right {
+.spaceBar {
   border-right: solid 3px var(--primary);
 }
 
 img {
-  width: 80%;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 5px
+}
+
+#input-color {
+  width: 15rem;
+  background-color: var(--primary);
+  border: none;
+  cursor: pointer;
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-container form .right {
+    border: none;
+  }
+  
 }

@@ -5,6 +5,7 @@
   border-radius: 5px;
   border: none;
   transition: all 0.2s ease-in-out;
+  width: 15rem;
 }
 
 .button-ui:hover {

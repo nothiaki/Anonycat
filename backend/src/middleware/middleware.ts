@@ -18,7 +18,6 @@ type ReqMessage = {
 }
 
 export async function onChat(req: ReqUser, socket: Socket) {
-  console.log("onchatCAlled");
   const reqSchema = z.object({
     color: z.string().min(4, { message: "Color needs to follow the HEX format: #FFFFFF" })
       .max(7, { message: "Color needs to follow the HEX format: #FFFFFF" }),

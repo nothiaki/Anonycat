@@ -3,7 +3,7 @@ import cors from 'cors';
 import router from './routes/routes'
 import http from 'http';
 import { Server } from 'socket.io';
-import * as middleware from './middleware';
+import * as middleware from './middleware/middleware';
 
 const app = express();
 const PORT: number = 3000;

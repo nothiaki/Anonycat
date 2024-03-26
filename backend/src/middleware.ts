@@ -1,24 +1,8 @@
-import { io } from './http';
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
 const prisma = new PrismaClient();
 
-io.on('connection', socket => {
-  socket.on('on_chat', req => {
-    onChat(req, socket);
-  });
-
-  socket.on('message', req => {
-    onMessage(req);
-  });
-
-  socket.on('disconnect', req => {
-    onDisconnect(req);
-  });
-});
-
-//types
 type ReqUser = {
   color: string,
   name: string
@@ -33,8 +17,8 @@ type ReqMessage = {
   owner: string
 }
 
-//functions
-async function onChat(req: ReqUser, socket: Socket) {
+export async function onChat(req: ReqUser, socket: Socket) {
+  console.log("onchatCAlled");
   const reqSchema = z.object({
     color: z.string().min(4, { message: "Color needs to follow the HEX format: #FFFFFF" })
       .max(7, { message: "Color needs to follow the HEX format: #FFFFFF" }),
@@ -62,7 +46,7 @@ async function onChat(req: ReqUser, socket: Socket) {
   });
 };
 
-async function onMessage(req: ReqMessage) {
+export async function onMessage(req: ReqMessage) {
   const reqSchema = z.object({
     content: z.string().min(1, { message: "Message can't be empty" })
       .max(360, { message: "Message longer than 360 caracteres" }),
@@ -89,10 +73,10 @@ async function onMessage(req: ReqMessage) {
   });
 };
 
-async function onDisconnect(name: string) {
+export async function deleteUser(name: string) {
   await prisma.user.delete({
     where: {
       name
     }
   });
-}
+};

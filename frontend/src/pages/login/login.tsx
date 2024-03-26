@@ -14,12 +14,11 @@ const Login = () => {
   return (
     <div className="login-container">
       <form method="post">
-        <div className='right'>
+        <div className='left'>
           <img src='https://pbs.twimg.com/profile_images/1770271023885144064/O9lHM-qY_400x400.jpg' />
           <Button func={goHome} content='Upload picture' />
         </div>
-        <div className="spaceBar"></div>
-        <div className='left'>
+        <div className='right'>
           <InputText label='Anonyname:' name='anonyname-input' />
           <input type="color" name="input-color" id="input-color" />
           <Button func={goHome} content='Join chat' />

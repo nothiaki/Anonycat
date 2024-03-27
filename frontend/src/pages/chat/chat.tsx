@@ -1,22 +1,15 @@
-import Button from "../../ui/button/button";
-import InputText from "../../ui/inputText/inputText";
-import { io } from "socket.io-client";
-
-const socket = io("http://localhost:3000");
-console.log(socket);
+import Button from '../../ui/button/button';
 
 const Chat = () => {
 
   const onMessage = () => {
-    console.log("mensagem");
-    socket.emit('on_chat', { color: '#FFFFFF', name: 'username' })
+    console.log('hi');
   };
 
   return (
     <div>
       <h1>Chat Page</h1>
-      <InputText label="Send message" name="send-message" />
-      <Button func={onMessage} content="send" />
+      <Button func={onMessage} content='send' />
     </div>
   );
 }

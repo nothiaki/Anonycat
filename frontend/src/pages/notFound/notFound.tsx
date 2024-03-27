@@ -1,6 +1,6 @@
 import './notFound.css'
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../ui/button/button';
 
 const NotFound = () => {
@@ -9,7 +9,7 @@ const NotFound = () => {
 
   const goHome = useCallback(() => {
     navigate('/');
-  }, [navigate])
+  }, [navigate]);
 
   return (
     <div className='not-found-container'>

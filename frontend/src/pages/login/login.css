@@ -23,18 +23,35 @@
   border-right: solid 3px var(--primary);
 }
 
-.login-container form .right {
-  padding: 72px 36px;
-  justify-content: space-around;
-}
-
 img {
   width: 100%;
   max-width: 240px;
   border-radius: 5px
 }
 
-#input-color {
+.login-container form .right {
+  padding: 72px 36px;
+  justify-content: space-around;
+}
+
+.login-container form .right .input-text-label input {
+  margin-top: 2px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 3px var(--primary);
+  padding: 2px;
+}
+
+.login-container form .right .input-text-label input:focus {
+  outline: none;
+}
+
+.login-container form .right .input-text-label input[type="text"] {
+    font-size: 18px;
+}
+
+.input-color-text-label .input-color {
+  margin-top: 2px;
   width: 15rem;
   background-color: var(--primary);
   border: none;

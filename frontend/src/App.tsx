@@ -1,10 +1,10 @@
-import MappedRoutes from "./routes"
+import MappedRoutes from './routes';
 
 
 function App() {
 
   return (
-    <MappedRoutes/>
+    <MappedRoutes />
   )
 }
 

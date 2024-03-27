@@ -1,7 +1,7 @@
 import './button.css'
 
 type Props = {
-  func: () => void,
+  func?: () => void,
   content: string
 }
 

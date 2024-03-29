@@ -1,10 +1,8 @@
-import './notFound.css'
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../ui/button/button';
+import { Button } from '../../ui/button';
 
-const NotFound = () => {
-
+export const NotFound = () => {
   const navigate = useNavigate();
 
   const goHome = useCallback(() => {
@@ -12,9 +10,9 @@ const NotFound = () => {
   }, [navigate]);
 
   return (
-    <div className='not-found-container'>
-      <main>
-        <h1>Ooops...</h1>
+    <div className='w-screen h-screen flex items-center justify-center bg-background text-text'>
+      <main className='flex items-start flex-col p-8 gap-6'>
+        <h1 className='text-2xl font-medium'>Ooops...</h1>
         <h3>You look lost, return to home page clicking on the button below!</h3>
         <Button func={goHome} content='Go home' />
       </main>
@@ -22,4 +20,3 @@ const NotFound = () => {
   );
 }
 
-export default NotFound;

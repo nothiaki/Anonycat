@@ -1,11 +1,8 @@
 import MappedRoutes from './routes';
 
-
-function App() {
-
+export default function App() {
   return (
     <MappedRoutes />
   )
 }
 
-export default App

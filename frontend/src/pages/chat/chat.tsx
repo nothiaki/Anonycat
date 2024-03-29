@@ -1,17 +1,8 @@
-import Button from '../../ui/button/button';
-
-const Chat = () => {
-
-  const onMessage = () => {
-    console.log('hi');
-  };
-
+export const Chat = () => {
   return (
     <div>
       <h1>Chat Page</h1>
-      <Button func={onMessage} content='send' />
     </div>
   );
 }
 
-export default Chat;

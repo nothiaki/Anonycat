@@ -1,19 +1,16 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../ui/button';
-import { io } from 'socket.io-client';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
-
-const socket = io('http://localhost:3000');
 
 const inputSchema = z.object({
   color: z.string(),
   name: z.string()
 });
 
-//type FormData = z.infer<typeof inputSchema>;
+type FormData = z.infer<typeof inputSchema>;
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -21,20 +18,28 @@ export const Login = () => {
     resolver: zodResolver(inputSchema)
   });
 
-  const joinChat = (data: any) => {
-    try {
-      socket.emit('on_chat', data);
-      redirect();
-    } catch (err) {
-      console.log('error');
+  const joinChat = async (data: FormData) => {
+    const res = await fetch('http://localhost:3000/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      return console.log(res);
     };
+
+    redirect();
   };
 
   const redirect = useCallback(() => {
     navigate('/chat');
   }, [navigate]);
 
-  const uploadPicture = () => {
+  const uploadPicture = (evt: any) => {
+    evt.preventDefault();
     alert('This feature will coming soon!');
   };
 

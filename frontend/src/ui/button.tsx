@@ -1,5 +1,5 @@
 type Props = {
-  func?: () => any,
+  func?: (param?: any) => any,
   content: string
 };
 

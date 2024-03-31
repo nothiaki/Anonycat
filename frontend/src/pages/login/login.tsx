@@ -31,6 +31,8 @@ export const Login = () => {
       return console.log(res);
     };
 
+    localStorage.setItem('name', data.name);
+    localStorage.setItem('color', data.color);
     redirect();
   };
 

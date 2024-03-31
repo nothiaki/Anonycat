@@ -3,47 +3,10 @@ import { z } from "zod";
 
 const prisma = new PrismaClient();
 
-type ReqUser = {
-  color: string,
-  name: string
-}
-
-type Socket = {
-  id: string
-}
-
 type ReqMessage = {
   content: string,
   owner: string
 }
-
-export async function onChat(req: ReqUser, socket: Socket) {
-  const reqSchema = z.object({
-    color: z.string().min(4, { message: "Color needs to follow the HEX format: #FFFFFF" })
-      .max(7, { message: "Color needs to follow the HEX format: #FFFFFF" }),
-    name: z.string().min(1, { message: "Name can't be empty" })
-  });
-
-  const { color, name } = reqSchema.parse(req);
-
-  const userExist = await prisma.user.findUnique({
-    where: {
-      name
-    }
-  });
-
-  if (userExist) {
-    throw new Error('User already exists');
-  };
-
-  await prisma.user.create({
-    data: {
-      color,
-      id: socket.id,
-      name
-    }
-  });
-};
 
 export async function onMessage(req: ReqMessage) {
   const reqSchema = z.object({
@@ -78,4 +41,6 @@ export async function deleteUser(name: string) {
       name
     }
   });
+
+  //also delete mssages
 };

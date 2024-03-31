@@ -23,11 +23,8 @@ const io = new Server(httpServer, {
 io.on('connection', socket => {
   console.log(`new user: ${socket.id}`);
 
-  socket.on('on_chat', req => {
-    middleware.onChat(req, socket);
-  });
-
-  socket.on('message', req => {
+  socket.on('send_message', req => {
+    socket.broadcast.emit('get_message', req);
     middleware.onMessage(req);
   });
 

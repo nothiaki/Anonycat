@@ -8,7 +8,6 @@ datasource db {
 }
 
 model User {
-  id      String    @unique
   color   String
   name    String    @unique
   Message Message[]

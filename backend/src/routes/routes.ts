@@ -1,12 +1,9 @@
 import express from 'express';
 import * as userController from '../controller/user/index';
-import * as messageController from '../controller/message/index';
 
 const router = express.Router();
 
 router.post('/user', userController.create);
 router.get('/user', userController.getMany);
-
-router.get('/message', messageController.getMany);
 
 export default router;

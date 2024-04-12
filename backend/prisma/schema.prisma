@@ -10,13 +10,5 @@ datasource db {
 model User {
   color   String
   name    String    @unique
-  Message Message[]
 }
 
-model Message {
-  id        Int      @id @default(autoincrement())
-  content   String
-  createdAt DateTime @default(now())
-  owner     String
-  User      User     @relation(fields: [owner], references: [name])
-}

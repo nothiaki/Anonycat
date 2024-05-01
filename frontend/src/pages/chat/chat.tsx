@@ -36,6 +36,9 @@ export const Chat = () => {
     return (
       <div
         className='w-screen min-h-screen p-8 flex flex-col items-center justify-center gap-8 bg-background text-text md:p-32'>
+        <header className='bg-link'>
+          <h2 onClick={signout}>back</h2>
+        </header>
         <input className='w-full p-1 mt-0.5 bg-[#ffffff00] border-b-2 border-primary focus:outline-none'
           type='text' placeholder='Send a message...' onChange={(evt) => { setInput(evt.target.value) }}
         />
@@ -48,21 +51,5 @@ export const Chat = () => {
   } else {
     return <NotFound />
   };
-
-  return (
-    <div
-      className='w-screen min-h-screen p-8 flex flex-col items-center justify-center gap-8 bg-background text-text md:p-32'>
-      <header className='bg-link'>
-        <h2 onClick={signout}>back</h2>
-      </header>
-      <input className='w-full p-1 mt-0.5 bg-[#ffffff00] border-b-2 border-primary focus:outline-none'
-        type='text' placeholder='Send a message...' onChange={(evt) => { setInput(evt.target.value) }}
-      />
-      <Button func={sendMessage} content='Send' />
-      <p>messages...</p>
-      <p>messages...</p>
-      <p>{getMessage}</p>
-    </div>
-  );
 }
 

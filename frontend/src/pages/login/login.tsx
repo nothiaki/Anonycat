@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../ui/button';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Error } from '../../ui/error';
@@ -21,22 +21,29 @@ export const Login = () => {
   });
 
   const [isNameInvalid, setNameInvalid] = useState(false)
+  const [errorText, setErrorText] = useState('')
+
   const redirect = useCallback(() => {
     navigate('/chat');
   }, [navigate]);
 
   const joinChat = async (data: User) => {
-    const res = await axios.post('http://localhost:3000/user', data);
 
-    if (res.status != 201) {
-      console.log('show error');
-      console.log(res)
-      return console.log(res);
+    try {
+      const res = await axios.post('http://localhost:3000/user', data);
+
+      console.log(res.data.message)
+
+      localStorage.setItem('name', data.name);
+      localStorage.setItem('color', data.color);
+      redirect();
+
+    } catch (error: any) {
+      setErrorText(error.response.data.message)
+      setNameInvalid(true)
+      console.log(error)
     }
 
-    localStorage.setItem('name', data.name);
-    localStorage.setItem('color', data.color);
-    redirect();
   };
 
   return (
@@ -60,6 +67,7 @@ export const Login = () => {
             onInvalid={(e) => {
               e.preventDefault();
               setNameInvalid(true);
+              setErrorText('the username cannot be empty.');
             }}
           />
         </label>
@@ -71,7 +79,7 @@ export const Login = () => {
         </label>
         <Button content='Join Chat' />
       </form>
-      {isNameInvalid && <Error />}
+      {isNameInvalid && <Error text={errorText}/>}
     </div >
   );
 }

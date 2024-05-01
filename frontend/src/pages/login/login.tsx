@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Error } from '../../ui/error';
+import axios from 'axios';
 
 const inputSchema = z.object({
   color: z.string(),
@@ -20,17 +21,16 @@ export const Login = () => {
   });
 
   const [isNameInvalid, setNameInvalid] = useState(false)
+  const redirect = useCallback(() => {
+    navigate('/chat');
+  }, [navigate]);
 
   const joinChat = async (data: User) => {
-    const res = await fetch('http://localhost:3000/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    const res = await axios.post('http://localhost:3000/user', data);
 
-    if (!res.ok) {
+    if (res.status != 201) {
+      console.log('show error');
+      console.log(res)
       return console.log(res);
     }
 
@@ -38,10 +38,6 @@ export const Login = () => {
     localStorage.setItem('color', data.color);
     redirect();
   };
-
-  const redirect = useCallback(() => {
-    navigate('/chat');
-  }, [navigate]);
 
   return (
     <div

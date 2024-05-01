@@ -29,7 +29,7 @@ export const Login = () => {
 
     if (!res.ok) {
       return console.log(res);
-    };
+    }
 
     localStorage.setItem('name', data.name);
     localStorage.setItem('color', data.color);

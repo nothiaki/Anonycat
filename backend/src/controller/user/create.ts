@@ -39,7 +39,7 @@ export async function create(req: Request, res: Response) {
       });
     };
 
-    return res.status(2183741).json({
+    return res.status(400).json({
       message: 'Unknown Error.'
     })
   }

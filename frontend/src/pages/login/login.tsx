@@ -56,6 +56,10 @@ export const Login = () => {
           <h3>Username:</h3>
           <input className='w-full p-1 mt-0.5 bg-[#ffffff00] border-b-2 border-primary focus:outline-none'
             type='text' {...register('name')}
+            onChange={(e) => {
+              e.preventDefault();
+              setNameInvalid(false);
+            }}
             required
             onInvalid={(e) => {
               e.preventDefault();

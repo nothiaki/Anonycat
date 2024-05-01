@@ -54,7 +54,7 @@ export const Login = () => {
         <p>Welcome to our website where you can create a temporary account and send anonymous messages, which are deleted every 40 minutes.</p>
         <p>Remember to read our <a className='text-link' href='#'>privacy policy terms</a>.</p>
       </div>
-      <form className='w-full flex flex-col gap-12 md:w-1/2' onSubmit={handleSubmit(joinChat)}>
+      <form className='w-full flex flex-col gap-12 md:w-1/2' autoComplete='off' onSubmit={handleSubmit(joinChat)}>
         <label>
           <h3>Username:</h3>
           <input className='w-full p-1 mt-0.5 bg-[#ffffff00] border-b-2 border-primary focus:outline-none'

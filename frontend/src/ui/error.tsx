@@ -4,7 +4,7 @@ import { useState } from 'react';
 export const Error = (props) => {
 
     const { text } = props
-    
+
     const [isClicked, setIsClicked] = useState(false);
 
     const displaySetter = isClicked == true? 'none' : 'block';

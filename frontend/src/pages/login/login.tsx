@@ -1,9 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../ui/button';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Error } from '../../ui/error';
 
 const inputSchema = z.object({
   color: z.string(),
@@ -17,6 +18,8 @@ export const Login = () => {
   const { register, handleSubmit } = useForm({
     resolver: zodResolver(inputSchema)
   });
+
+  const [isNameInvalid, setNameInvalid] = useState(false)
 
   const joinChat = async (data: User) => {
     const res = await fetch('http://localhost:3000/user', {
@@ -44,16 +47,20 @@ export const Login = () => {
     <div
       className='w-screen min-h-screen p-12 flex flex-col items-center justify-center gap-8 bg-background text-text md:flex-row md:p-36'>
       <div className='flex flex-col gap-10 md:w-1/2'>
-        <h1 className='text-4xl font-medium'>Join now on <br />Anonycat! <br />Shh.</h1>
+        <h1 className='text-4xl font-medium'>Join now on <br />Anonycat! <br />Shh...</h1>
         <p>Welcome to our website where you can create a temporary account and send anonymous messages, which are deleted every 40 minutes.</p>
         <p>Remember to read our <a className='text-link' href='#'>privacy policy terms</a>.</p>
       </div>
-
       <form className='w-full flex flex-col gap-12 md:w-1/2' onSubmit={handleSubmit(joinChat)}>
         <label>
           <h3>Username:</h3>
           <input className='w-full p-1 mt-0.5 bg-[#ffffff00] border-b-2 border-primary focus:outline-none'
             type='text' {...register('name')}
+            required
+            onInvalid={(e) => {
+              e.preventDefault();
+              setNameInvalid(true);
+            }}
           />
         </label>
         <label>
@@ -64,6 +71,7 @@ export const Login = () => {
         </label>
         <Button content='Join Chat' />
       </form>
+      {isNameInvalid && <Error />}
     </div >
   );
 }

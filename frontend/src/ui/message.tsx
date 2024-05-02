@@ -7,7 +7,7 @@ export const MessageComponent = (props: { message: Message }) => {
 
     return (
         <div className= {`flex ${isOwnerMessage}`}>
-            <p className="items-center bg-primary rounded p-1 m-1">{content}</p>
+            <p className="items-center bg-primary rounded p-2 m-1 max-w-screen-md break-words">{content}</p>
         </div>
     );
 }

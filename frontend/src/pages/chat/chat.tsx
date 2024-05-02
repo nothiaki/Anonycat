@@ -41,26 +41,33 @@ export const Chat = () => {
     };
   }, []);
 
+  const keyEnter=(event)=> {
+    if (event.keyCode === 13) {
+        sendMessage()
+    }
+  }
+
   if (isAuth()) {
     return (
-      <div className='w-screen min-h-screen p-8 flex flex-col items-center justify-center gap-8 bg-background text-text md:p-32'>
+      <div className='w-screen max-h-screen p-8 flex flex-col items-center justify-center gap-8 bg-background text-text md:p-32'>
         <header className='w-full p-4 absolute top-0'>
           <div className='w-fit p-1 bg-primary rounded hover:cursor-pointer' onClick={signout}>
             <ArrowBigLeft />
           </div>
         </header>
-        <main className='border-2 border-error flex flex-col w-10/12'>
+        <main className='flex flex-col w-10/12 max-h-screen overflow-y-auto'>
           {messages.map((message, index) => (
             <MessageComponent key={index} message={{ content: message.content, owner: message.owner }} />
           ))}
         </main>
-        <footer className='absolute bottom-0 p-4 flex gap-4'>
+        <footer className='bottom-0 flex gap-4'>
           <input
-            className='w-full p-2 bg-primary rounded focus:outline-none'
+            className='w-96 p-2 bg-primary rounded focus:outline-none'
             type='text'
             placeholder='Send a message...'
             value={input}
             onChange={(evt) => setInput(evt.target.value)}
+            onKeyDown={(e) => keyEnter(e)}
           />
           <div className='flex items-center justify-center p-1 bg-primary rounded hover:cursor-pointer' onClick={sendMessage}>
             <ArrowBigUp />

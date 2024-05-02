@@ -51,7 +51,7 @@ export const Chat = () => {
           <input className='w-full p-2 bg-primary rounded focus:outline-none'
             type='text' placeholder='Send a message...' onChange={(evt) => { setInput(evt.target.value) }}
           />
-          <div className='flex items-center justify-center p-1 bg-primary rounded hover:cursor-pointer' onClick={signout}>
+          <div className='flex items-center justify-center p-1 bg-primary rounded hover:cursor-pointer' onClick={sendMessage}>
             <ArrowBigUp />
           </div>
         </footer>

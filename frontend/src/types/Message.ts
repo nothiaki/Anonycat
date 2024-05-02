@@ -1,4 +1,5 @@
 export type Message = {
   content: string,
-  owner: string
+  owner: string,
+  ownerColor: string | null,
 };
